@@ -8,16 +8,16 @@ import "@matterlabs/hardhat-zksync-verify";
 
 // If not set, it uses ours Alchemy's default API key.
 // You can get your own at https://dashboard.alchemyapi.io
-const providerApiKey = process.env.ALCHEMY_API_KEY || "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF";
+const providerApiKey = process.env.ALCHEMY_API_KEY || "qrelkFVJaps8yXl1odvGSU3XGIlQJgGQ";
 // If not set, it uses the hardhat account 0 private key.
 const deployerPrivateKey =
   process.env.DEPLOYER_PRIVATE_KEY ?? "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
 // If not set, it uses ours Etherscan default API key.
-const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
+const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "S93YCV2GH2YIAAY1CAH5QYYP4QKZJDYRUB";
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.17",
+    version: "0.8.19",
     settings: {
       optimizer: {
         enabled: true,
@@ -26,7 +26,7 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "sepolia",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
