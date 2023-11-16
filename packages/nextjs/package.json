@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "serve": "next start",
     "lint": "next lint",
     "format": "prettier --write . '!(node_modules|.next|contracts)/**/*'",
@@ -14,14 +14,19 @@
     "vercel:yolo": "vercel --build-env NEXT_PUBLIC_IGNORE_BUILD_ERROR=true"
   },
   "dependencies": {
+    "@ethersproject/networks": "^5.7.1",
     "@ethersproject/providers": "^5.7.2",
+    "@ethersproject/web": "^5.7.1",
     "@heroicons/react": "^2.0.11",
     "@rainbow-me/rainbowkit": "1.1.2",
     "@uniswap/sdk-core": "^4.0.1",
     "@uniswap/v2-sdk": "^3.0.1",
     "blo": "^1.0.1",
     "daisyui": "^3.5.1",
+    "ethers": "^6.8.1",
+    "kaboom": "^3000.1.17",
     "next": "^13.1.6",
+    "next-optimized-images": "^2.6.2",
     "nextjs-progressbar": "^0.0.16",
     "qrcode.react": "^3.1.0",
     "react": "^18.2.0",

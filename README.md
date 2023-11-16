@@ -1,78 +1,73 @@
-# 🏗 Scaffold-ETH 2
+Eat The BOP Game ft ChainLink VRF & CCIP
+2D game where you eat BOP tokens looking for the real BOP token on the level to win and earn BOP.
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+The Hoarders searches the board for the real BOP token amoung the fake tokens. The hoarder may have obstacles to move before being able to reach certain tokens. Each time a hoarder eats a token they pay a small fee with a random chance of winning a reward paid in BOP tokens.
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Chainlink and Typescript.
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, and Typescript.
+EatTheBopDirectFund = 0xfBB287E3cd2Dcae6faf632e132EDD87060c0C63D // Sepolia
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+How to Play
+You first need lifes to play Eat The BOP after clicking the play button look for the Buy Lifes button to purchase 3 Lifes
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/1171422a-0ce4-4203-bcd4-d2d1941d198b)
-
-## Requirements
-
+Contents
+Requirements
+Quickstart
+Requirements
 Before you begin, you need to install the following tools:
 
-- [Node (v18 LTS)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
-
-## Quickstart
-
+Node (v18 LTS)
+Yarn (v1 or v2+)
+Git
+Quickstart
 To get started with Scaffold-ETH 2, follow the steps below:
 
-1. Clone this repo & install dependencies
-
-```
-git clone https://github.com/scaffold-eth/scaffold-eth-2.git
-cd scaffold-eth-2
+Clone this repo & install dependencies
+git clone https://github.com/moneyhoardersglobalnetwork/eatthebop.git
+cd eatthebop
 yarn install
-```
-
-2. Run a local network in the first terminal:
-
-```
+Run a local network in the first terminal:
 yarn chain
-```
+This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in hardhat.config.ts.
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
-
-3. On a second terminal, deploy the test contract:
-
-```
+On a second terminal, deploy the test contract:
 yarn deploy
-```
+This command deploys a test smart contract to the local network. The contract is located in packages/hardhat/contracts and can be modified to suit your needs. The yarn deploy command uses the deploy script located in packages/hardhat/deploy to deploy the contract to the network. You can also customize the deploy script.
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
-
-4. On a third terminal, start your NextJS app:
-
-```
+On a third terminal, start your NextJS app:
 yarn start
-```
+Visit your app on: http://localhost:3000. You can interact with your smart contract using the contract component or the example ui in the frontend. You can tweak the app config in packages/nextjs/scaffold.config.ts.
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+Run smart contract test with yarn hardhat:test
 
-Run smart contract test with `yarn hardhat:test`
+Scaffold-ETH-2 gives us a foundation interface to quickly interact with the game contract.
 
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend in `packages/nextjs/pages`
-- Edit your deployment scripts in `packages/hardhat/deploy`
+Edit your smart contract YourContract.sol in packages/hardhat/contracts
 
-## Documentation
+Edit your frontend in packages/nextjs/pages
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+Edit your deployment scripts in packages/hardhat/deploy
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+Find the main game smart contract EatTheBop.sol in packages/hardhat/contracts
 
-## Contributing to Scaffold-ETH 2
+Edit your frontend in packages/nextjs/pages
 
-We welcome contributions to Scaffold-ETH 2!
+Edit your deployment scripts in packages/hardhat/deploy
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+ChainLink features we plan to use are Price Feeds, VRF, and CCIP
+
+Github pushing Git Hub Staging, Commiting, Pushing //Commands for updating repo on github(Build this out)
+
+//Check remote origin
+
+git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+
+git remote -v
+
+git add . //adds modified files to commit# mhgn-hoarding-gateway
+
+git commit -m "update from local" // Commit your changes to be pushed to repo
+
+Use the --no-verify option to skip git commit hooks, e.g. git commit -m "commit message" --no-verify . When the --no-verify option is used, the pre-commit and commit-msg hooks are bypassed. Copied! You can also use the -n option, which is short for --no-verify .
+
+git push //push to repo //Push updates to repo (main)
