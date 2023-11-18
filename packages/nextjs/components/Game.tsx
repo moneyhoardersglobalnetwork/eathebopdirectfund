@@ -11,6 +11,11 @@ const Game = () => {
 
   const { address } = useAccount();
 
+  const { data: randomResult } = useScaffoldContractRead({
+    contractName: "EatTheBopDirectFund",
+    functionName: "randomResult",
+  });
+
   const { data: life } = useScaffoldContractRead({
     contractName: "EatTheBopDirectFund",
     functionName: "life",
@@ -72,16 +77,15 @@ const Game = () => {
 
     k.addLevel(
       [
-        `  xxx   xex   xex`,
-        `   x  xxxxxxe x  `,
-        `   xe x      xxx `,
-        ` xxx      e xxxx`,
-        ` x    x   x  xxx`,
-        ` x   xex  x    x `,
-        ` x    x  x    xex`,
-        ` exxxx   xxxx   `,
-        `xxxx  xex xexx `,
-      
+        `  xxx   xex   xex        `,
+        `   x  xxxxxxe x          `,
+        `   xe x              xxx `,
+        ` xxx      e x         xxx`,
+        ` x    x   x  xxx         `,
+        ` x   xex  x    x         `,
+        ` x    x  x          xex  `,
+        ` exxxx   xxxx            `,
+        `xxxx  xex xexx           `,
       ],
       {
         tileWidth: 50,
@@ -120,10 +124,17 @@ const Game = () => {
 
   return (
     <div>
-      <h1 className="text-3xl text-center my-5">Find the real BOP to win a 6000 BOP</h1>
+      <h1 className="text-3xl text-center my-5">
+        Hoarders eat BOP tokens to change the zone. First hoarder to eat a token in Zone 6 wins 6000 BOP
+      </h1>
       <div className="flex justify-center">
+        <div className="game w-full">
+          <canvas ref={canvasRef}></canvas>
+        </div>
         <div className="mr-5">
           <p className="text-2xl mt-10">Lifes = {life?.toString()}</p>
+          <p className="text-2xl mt-10">Zone = {randomResult?.toString()}</p>
+
           <button
             className="py-2 px-4 bg-green-500 rounded baseline hover:bg-green-300 disabled:opacity-50"
             onClick={() => payGame()}
@@ -134,13 +145,10 @@ const Game = () => {
           <p className="text-xl mt-20">Notes</p>
           <p className="text-slate-500 mb-0">*Eating Fake BOP can</p>
           <p className="text-slate-500 mt-0">cost you a life</p>
-          <p className="text-slate-500 mb-0">*You pay gas fees</p>
-          <p className="text-slate-500 mt-0">for every BOP you eat choose wisely</p>
+          <p className="text-slate-500 mb-0">*You pay gas fees to eat and eating changes the zone</p>
+          <p className="text-slate-500 mt-0">If the board in reading Zone 6 all tokens are marked</p>
         </div>
         <div></div>
-        <div className="game w-full">
-          <canvas ref={canvasRef}></canvas>
-        </div>
       </div>
     </div>
   );
