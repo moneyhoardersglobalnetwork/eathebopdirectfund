@@ -30,11 +30,11 @@ const Game = () => {
   useScaffoldEventSubscriber({
     contractName: "EatTheBopDirectFund",
     eventName: "Result",
-    listener: (player: any, num: any, isWinner) => {
-      console.log(player, num, isWinner);
-      if (isWinner) notification.success(`${num}: You Won`);
-      else if (num === 5) notification.error(`${num}: You Lose Life`);
-      else notification.info(`${num}: Nothing`);
+    listener: (player: any, randomResult: any, isWinner: any) => {
+      console.log(player, randomResult, isWinner);
+      if (isWinner) notification.success(`${randomResult}: You Won`);
+      else if (randomResult <= 5) notification.error(`${randomResult}: You Lose Life`);
+      else notification.info(`${randomResult}: Nothing`);
     },
   });
 
@@ -49,7 +49,7 @@ const Game = () => {
   const { writeAsync: payGame } = useScaffoldContractWrite({
     contractName: "EatTheBopDirectFund",
     functionName: "playGame",
-    value: "0.01",
+    value: "10000000000000000", //This passes the value to buy lives button
     onBlockConfirmation: txnReceipt => {
       console.log("📦 Transaction blockHash", txnReceipt.blockHash);
     },
@@ -125,7 +125,8 @@ const Game = () => {
   return (
     <div>
       <h1 className="text-3xl text-center my-5">
-        Hoarders eat BOP tokens to change the zone. First hoarder to eat a token in Zone 6 wins 6000 BOP
+        Hoarders eat BOP tokens in random zones some are real some are fake. Eating real BOP rewards 6 BOP tokens and
+        there is one token in zone 6 that rewards 6000 BOP tokens Good Luck Hoarders!
       </h1>
       <div className="flex justify-center">
         <div className="game w-full">

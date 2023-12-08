@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   11155111: {
     EatTheBopDirectFund: {
-      address: "0xfBB287E3cd2Dcae6faf632e132EDD87060c0C63D",
+      address: "0x4B53b109F489D4D382d18C5D120f15f6B9a62E1A",
       abi: [
         {
           inputs: [],
@@ -127,7 +127,7 @@ const deployedContracts = {
             {
               indexed: false,
               internalType: "uint256",
-              name: "num",
+              name: "randomResult",
               type: "uint256",
             },
             {
@@ -468,6 +468,19 @@ const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [],
+          name: "reward2",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "uint256",
@@ -537,13 +550,10 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {
-        rawFulfillRandomWords:
-          "@chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol",
-        acceptOwnership:
-          "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol",
+        rawFulfillRandomWords: "@chainlink/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol",
+        acceptOwnership: "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol",
         owner: "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol",
-        transferOwnership:
-          "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol",
+        transferOwnership: "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol",
       },
     },
   },

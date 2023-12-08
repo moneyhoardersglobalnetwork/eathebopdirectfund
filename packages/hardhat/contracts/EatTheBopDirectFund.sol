@@ -78,12 +78,13 @@ contract EatTheBopDirectFund is
     uint256[] public nums;
     mapping(address => uint256) public life;
     uint public reward = 6000000000000000000000; //Should reward 6000 BOP tokens
+    uint public reward2 = 6000000000000000000; //Should reward 6 BOP tokens
     ERC20 public gameToken;
     uint256 public Total_Reward_Pool;
 
-    event Result(address player, uint256 num, bool isWinner);
+    event Result(address player, uint256 randomResult, bool isWinner);
     event Pooled(address indexed user, uint256 amount);
-    
+    event Withdrew(address indexed user, uint256 amount);
    
 
     // Address LINK - hardcoded for Sepolia
@@ -133,13 +134,23 @@ contract EatTheBopDirectFund is
         Total_Reward_Pool -= reward; //decrements the rewards pool when a hoarder wins
         hoarders[msg.sender].Total_AllTime_Reward += reward; //updates Hoarders All Time Reward tracking
         points += 1; //increments when a real BOP token is found
+        emit Result(msg.sender, randomResult, isWinner);
+        }
+
+         else if (randomResult > 6) {
+              isWinner = true;
+        // Function to transfer reward for finding the real BOP token
+        require(gameToken.balanceOf(address(this)) >= reward, "The contract does not have enough tokens to give you the reward");
+        gameToken.transfer(msg.sender, reward2); //tranfers BOP tokens to winner address
+        Total_Reward_Pool -= reward2; //decrements the rewards pool when a hoarder wins
+        emit Result(msg.sender, randomResult, isWinner);
         }
 
         else if (randomResult < 5) {
             life[msg.sender] -= 1;
         }
 
-        emit Result(msg.sender, randomResult, isWinner);
+        
     //The rest of the function is VRF code
         requestId = requestRandomness(
             callbackGasLimit,
@@ -205,6 +216,14 @@ contract EatTheBopDirectFund is
         gameToken.transferFrom(msg.sender, address(this), _amount);
         Total_Reward_Pool += _amount;
         emit Pooled(msg.sender, _amount);
+    }
+
+     //Withdraws tokens for rewards pool!
+    function WithdrawPoolTokens(uint256 _amount) public onlyOwner()  {
+        require(gameToken.balanceOf(address(this)) >= 0, "You cannot withdraw if there is no reward");
+        gameToken.transferFrom(address(this), msg.sender, _amount);
+        Total_Reward_Pool -= _amount;
+        emit Withdrew(msg.sender, _amount);
     }
 
     /**

@@ -5,7 +5,11 @@ The Hoarders searches the board for the real BOP token amoung the fake tokens. T
 
 ⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Chainlink and Typescript.
 
-EatTheBopDirectFund = 0xfBB287E3cd2Dcae6faf632e132EDD87060c0C63D // Sepolia
+EatTheBopDirectFund = 0xfBB287E3cd2Dcae6faf632e132EDD87060c0C63D // Sepolia - Drain this contract
+EatTheBOP Direct Fund 2 = 0x4B53b109F489D4D382d18C5D120f15f6B9a62E1A
+
+Vercel 
+
 
 How to Play
 You first need lifes to play Eat The BOP after clicking the play button look for the Buy Lifes button to purchase 3 Lifes
