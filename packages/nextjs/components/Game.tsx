@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import kaboom from "kaboom";
 import { useAccount } from "wagmi";
-import { useScaffoldContractRead, useScaffoldContractWrite, useScaffoldEventSubscriber } from "~~/hooks/scaffold-eth";
-import { notification } from "~~/utils/scaffold-eth";
+import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 const MOVE_SPEED = 150;
 
@@ -27,17 +27,6 @@ const Game = () => {
     functionName: "canPlay",
   });
 
-  useScaffoldEventSubscriber({
-    contractName: "EatTheBopDirectFund",
-    eventName: "Result",
-    listener: (player: any, randomResult: any, isWinner: any) => {
-      console.log(player, randomResult, isWinner);
-      if (isWinner) notification.success(`${randomResult}: You Won`);
-      else if (randomResult <= 5) notification.error(`${randomResult}: You Lose Life`);
-      else notification.info(`${randomResult}: Nothing`);
-    },
-  });
-
   const { writeAsync } = useScaffoldContractWrite({
     contractName: "EatTheBopDirectFund",
     functionName: "eatTheBop",
@@ -59,7 +48,7 @@ const Game = () => {
     if (life) {
       startGame();
     }
-  }, [canPlay]);
+  }, [canPlay, life]);
 
   const startGame = () => {
     const k = kaboom({
